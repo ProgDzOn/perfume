@@ -47,6 +47,7 @@ body{
 a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 svg{display:block}
+img{display:block;max-width:100%}
 ::selection{background:rgba(194,24,91,.18)}
 
 .container{
@@ -370,81 +371,32 @@ svg{display:block}
 }
 .stat span{font-size:14px;font-weight:600;color:var(--muted)}
 
-/* اللوحة الفنية */
-.art{position:relative;display:grid;place-items:center;min-height:460px}
-.art-card{
+/* صورة الهيرو الحقيقية */
+.hero-visual{
+  position:relative;
+  display:grid;
+  place-items:center;
+  min-height:480px;
+}
+.hero-image-frame{
   position:relative;
   width:100%;
-  max-width:430px;
-  aspect-ratio:1/1.06;
-  border-radius:230px 230px 44px 44px;
-  background:
-    radial-gradient(circle at 30% 18%, rgba(255,255,255,.75), transparent 55%),
-    linear-gradient(160deg,#FFD6E4 0%,#FFC7DB 38%,#E6DCFF 100%);
-  box-shadow:
-    0 50px 90px -46px rgba(194,24,91,.7),
-    inset 0 0 0 1px rgba(255,255,255,.65);
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
-  gap:20px;
-  padding:0 34px 62px;
+  max-width:460px;
+  aspect-ratio:4/5;
+  border-radius:48px;
   overflow:hidden;
+  box-shadow:
+    0 50px 100px -40px rgba(194,24,91,.55),
+    0 0 0 1px rgba(255,255,255,.7) inset;
+  background:#FCE7F0;
 }
-.art-card::before{
-  content:"";
-  position:absolute;
-  inset:auto -30% -55% -30%;
-  height:70%;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(255,255,255,.55),transparent 68%);
+.hero-image-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform 8s var(--ease);
 }
-
-/* الزجاجات المرسومة بـ CSS */
-.bottle{position:relative;z-index:1;filter:drop-shadow(0 22px 26px rgba(142,15,68,.28))}
-.bottle .cap{margin:0 auto;border-radius:9px 9px 4px 4px}
-.bottle .neck{margin:0 auto}
-.bottle .body{display:grid;place-items:center;border-radius:18px}
-.bottle .label{
-  font-size:11px;font-weight:900;letter-spacing:.22em;
-  color:#fff;
-  background:rgba(255,255,255,.22);
-  padding:4px 10px;
-  border-radius:7px;
-  border:1px solid rgba(255,255,255,.35);
-}
-
-.perfume .cap{width:46px;height:34px;background:linear-gradient(160deg,#8E5BF0,#4B1E9E)}
-.perfume .neck{width:22px;height:12px;background:#5B2BB8}
-.perfume .body{
-  width:122px;height:172px;
-  background:linear-gradient(160deg,#FF8FB5,#C2185B 70%,#8E0F44);
-  box-shadow:inset -12px -12px 26px rgba(0,0,0,.14), inset 12px 12px 26px rgba(255,255,255,.22);
-}
-
-.lipstick .bullet{
-  width:30px;height:58px;margin:0 auto;
-  border-radius:15px 15px 5px 5px;
-  background:linear-gradient(160deg,#FF7A5C,#E23B22);
-}
-.lipstick .tube{
-  width:48px;height:94px;
-  background:linear-gradient(160deg,#3A2A40,#170C1B);
-  border-radius:6px;
-}
-
-.jar .lid{
-  width:92px;height:26px;
-  border-radius:12px 12px 5px 5px;
-  background:linear-gradient(160deg,#FFD27A,#D89A2B);
-  box-shadow:inset 0 -4px 8px rgba(0,0,0,.12);
-}
-.jar .base{
-  width:102px;height:60px;
-  border-radius:5px 5px 22px 22px;
-  background:linear-gradient(160deg,#FFFFFF,#F0E4F3);
-  box-shadow:inset -8px -8px 18px rgba(160,120,170,.22);
-}
+.hero-image-frame:hover img{transform:scale(1.06)}
 
 /* بطاقات عائمة */
 .float{
@@ -464,8 +416,8 @@ svg{display:block}
   white-space:nowrap;
 }
 .float svg{width:20px;height:20px;color:var(--brand)}
-.float.one{top:6%;inset-inline-start:-14px;animation:floaty 6s ease-in-out infinite}
-.float.two{bottom:16%;inset-inline-end:-12px;animation:floaty 7s ease-in-out infinite reverse}
+.float.one{top:8%;inset-inline-start:-16px;animation:floaty 6s ease-in-out infinite}
+.float.two{bottom:14%;inset-inline-end:-14px;animation:floaty 7s ease-in-out infinite reverse}
 @keyframes floaty{50%{transform:translateY(-14px)}}
 
 /* ============================================================
@@ -567,35 +519,18 @@ svg{display:block}
 
 .product-media{
   position:relative;
-  height:212px;
-  display:grid;
-  place-items:center;
+  height:230px;
   overflow:hidden;
-  background:linear-gradient(150deg,var(--m1),var(--m2));
+  background:#FCE7F0;
 }
-.product-media::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at 28% 16%,rgba(255,255,255,.55),transparent 55%);
+.product-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .7s var(--ease);
 }
-.product-media::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(115deg,transparent 34%,rgba(255,255,255,.5) 50%,transparent 66%);
-  transform:translateX(-130%);
-  transition:transform .9s var(--ease);
-}
-.product:hover .product-media::after{transform:translateX(130%)}
-.product-media b{
-  position:relative;
-  z-index:1;
-  font-size:36px;
-  font-weight:900;
-  color:rgba(255,255,255,.95);
-  text-shadow:0 8px 24px rgba(0,0,0,.16);
-}
+.product:hover .product-media img{transform:scale(1.08)}
+
 .badge{
   position:absolute;
   top:14px;inset-inline-start:14px;
@@ -907,8 +842,8 @@ svg{display:block}
 
   .hero-inner{grid-template-columns:1fr;gap:48px;padding-block:52px 72px}
   .hero p{max-width:100%}
-  .art{min-height:auto;order:-1}
-  .art-card{max-width:360px}
+  .hero-visual{min-height:auto;order:-1}
+  .hero-image-frame{max-width:380px}
   .float.one{inset-inline-start:0}
   .float.two{inset-inline-end:0}
 }
@@ -926,10 +861,6 @@ svg{display:block}
   .contact-card{padding:48px 22px;border-radius:30px}
   .footer-grid{grid-template-columns:1fr}
   .footer-bottom{justify-content:center;text-align:center}
-  .art-card{padding:0 22px 46px;gap:14px}
-  .perfume .body{width:100px;height:148px}
-  .jar .base{width:86px;height:52px}
-  .jar .lid{width:78px;height:22px}
   .float{font-size:12.5px;padding:9px 13px}
 }
 </style>
@@ -955,7 +886,6 @@ svg{display:block}
 <header class="header" id="header">
   <div class="container header-inner">
 
-    <!-- الشعار -->
     <a class="logo" href="#" aria-label="الصفحة الرئيسية">
       <span class="logo-mark">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -969,7 +899,6 @@ svg{display:block}
       </span>
     </a>
 
-    <!-- التنقّل -->
     <nav class="nav" aria-label="التنقل الرئيسي">
       <a href="#categories">الأقسام</a>
       <a href="#products">المنتجات</a>
@@ -978,7 +907,6 @@ svg{display:block}
       <a href="#contact">تواصل معنا</a>
     </nav>
 
-    <!-- الأزرار -->
     <div class="header-actions">
       <button class="icon-btn" type="button" aria-label="بحث">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
@@ -990,13 +918,11 @@ svg{display:block}
       <a href="#products" class="btn btn-primary btn-sm">تسوّقي الآن</a>
     </div>
 
-    <!-- زر القائمة للجوال -->
     <button class="burger" id="burger" type="button" aria-label="فتح القائمة" aria-expanded="false" aria-controls="mobileMenu">
       <i></i>
     </button>
   </div>
 
-  <!-- قائمة الجوال -->
   <div class="mobile-menu" id="mobileMenu">
     <nav aria-label="قائمة الجوال">
       <a href="#categories">الأقسام</a>
@@ -1035,26 +961,15 @@ svg{display:block}
       </div>
     </div>
 
-    <!-- اللوحة الفنية -->
-    <div class="art">
-      <div class="art-card" role="img" aria-label="زجاجة عطر وأحمر شفاه وعلبة كريم">
-
-        <div class="bottle perfume">
-          <div class="cap"></div>
-          <div class="neck"></div>
-          <div class="body"><span class="label">LURA</span></div>
-        </div>
-
-        <div class="bottle lipstick">
-          <div class="bullet"></div>
-          <div class="tube"></div>
-        </div>
-
-        <div class="bottle jar">
-          <div class="lid"></div>
-          <div class="base"></div>
-        </div>
-
+    <!-- صورة الهيرو الحقيقية -->
+    <div class="hero-visual">
+      <div class="hero-image-frame">
+        <img
+          src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=900&q=80"
+          alt="زجاجة عطر أنيقة بإضاءة درامية"
+          width="900" height="1125"
+          loading="eager"
+        >
       </div>
 
       <div class="float one">
@@ -1134,11 +1049,16 @@ svg{display:block}
 
     <div class="products">
 
-      <!-- منتج 1 -->
+      <!-- منتج 1: عطر نسائي -->
       <article class="product reveal" style="--d:0s">
-        <div class="product-media" style="--m1:#FFD6E4;--m2:#FF8FB5">
+        <div class="product-media">
           <span class="badge sale">-20%</span>
-          <b>عطر</b>
+          <img
+            src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=600&q=80"
+            alt="عطر نسائي زهري في زجاجة أنيقة"
+            width="600" height="450"
+            loading="lazy"
+          >
         </div>
         <div class="product-body">
           <h3>عطر «وردة الليل»</h3>
@@ -1157,11 +1077,16 @@ svg{display:block}
         </div>
       </article>
 
-      <!-- منتج 2 -->
+      <!-- منتج 2: أحمر شفاه -->
       <article class="product reveal" style="--d:.08s">
-        <div class="product-media" style="--m1:#FFE0C9;--m2:#FFA77F">
+        <div class="product-media">
           <span class="badge">الأكثر مبيعاً</span>
-          <b>أحمر شفاه</b>
+          <img
+            src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=600&q=80"
+            alt="أحمر شفاه أحمر بلمسة احترافية"
+            width="600" height="450"
+            loading="lazy"
+          >
         </div>
         <div class="product-body">
           <h3>أحمر شفاه مات «روز»</h3>
@@ -1180,10 +1105,15 @@ svg{display:block}
         </div>
       </article>
 
-      <!-- منتج 3 -->
+      <!-- منتج 3: كريم بشرة -->
       <article class="product reveal" style="--d:.16s">
-        <div class="product-media" style="--m1:#DFF3E4;--m2:#8FD6A5">
-          <b>كريم</b>
+        <div class="product-media">
+          <img
+            src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80"
+            alt="كريم ترطيب للوجه في علبة أنيقة"
+            width="600" height="450"
+            loading="lazy"
+          >
         </div>
         <div class="product-body">
           <h3>كريم «هيدرا جلو»</h3>
@@ -1202,11 +1132,16 @@ svg{display:block}
         </div>
       </article>
 
-      <!-- منتج 4 -->
+      <!-- منتج 4: عطر رجالي -->
       <article class="product reveal" style="--d:.24s">
-        <div class="product-media" style="--m1:#E6DCFF;--m2:#B79CF5">
+        <div class="product-media">
           <span class="badge">جديد</span>
-          <b>عطر رجالي</b>
+          <img
+            src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80"
+            alt="عطر رجالي خشبي في زجاجة داكنة"
+            width="600" height="450"
+            loading="lazy"
+          >
         </div>
         <div class="product-body">
           <h3>عطر «ليل أسود»</h3>
@@ -1322,7 +1257,6 @@ svg{display:block}
   <div class="container">
     <div class="footer-grid">
 
-      <!-- العمود 1 -->
       <div>
         <a class="logo" href="#">
           <span class="logo-mark">
@@ -1357,7 +1291,6 @@ svg{display:block}
         </div>
       </div>
 
-      <!-- العمود 2 -->
       <div>
         <h4>تسوّقي</h4>
         <div class="footer-links">
@@ -1369,7 +1302,6 @@ svg{display:block}
         </div>
       </div>
 
-      <!-- العمود 3 -->
       <div>
         <h4>مساعدة</h4>
         <div class="footer-links">
@@ -1381,7 +1313,6 @@ svg{display:block}
         </div>
       </div>
 
-      <!-- العمود 4 -->
       <div>
         <h4>ابقَي على اطلاع</h4>
         <div class="contact-list">
@@ -1422,7 +1353,6 @@ svg{display:block}
 
 <script>
 (function(){
-  /* ظل الهيدر عند التمرير */
   var header = document.getElementById('header');
   var onScroll = function(){
     header.classList.toggle('scrolled', window.scrollY > 8);
@@ -1430,7 +1360,6 @@ svg{display:block}
   onScroll();
   window.addEventListener('scroll', onScroll, {passive:true});
 
-  /* قائمة الجوال */
   var burger = document.getElementById('burger');
   var menu   = document.getElementById('mobileMenu');
 
@@ -1449,7 +1378,6 @@ svg{display:block}
     });
   });
 
-  /* ظهور العناصر عند التمرير */
   var items = document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window){
     var io = new IntersectionObserver(function(entries){
